@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MouseEvents</title>
+	</head>
+<body>
+	 <!DOCTYPE html>
+<html>
+<head>
+   <title> Mouse Events</title>
+</head>
+<body>
+    <h1 style="color:green"><b><i>Please move your mouse on the page to get the co-ordinates</i></b></h1>
+    <canvas id="myCanvas" width="600" height="300" style="border:1px solid #000000;"></canvas>
+    <script>
+        function writeMessage(canvas, message) {
+            var context = canvas.getContext('2d');
+            context.clearRect(0, 0, 600, 300);
+            context.font = '20pt Calibri';
+            context.fillStyle = 'blue';
+            context.fillText(message, 10, 25);
+        }
+        function getMousePos(canvas, evt) {
+            var rect = canvas.getBoundingClientRect();
+            return {
+                x: evt.clientX - rect.left,
+                y: evt.clientY - rect.top
+            };
+        }
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+        canvas.addEventListener('mousemove', function (evt) {
+            var mousePos = getMousePos(canvas, evt);
+            var message = 'Mouse Moving: ' + mousePos.x + ',' + mousePos.y;
+            writeMessage(canvas, message);
+        }, false);
+    </script>
+</body>
+</html>
+
+</body>
+</html>
